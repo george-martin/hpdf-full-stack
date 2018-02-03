@@ -1,0 +1,7 @@
+- args:
+    sql: CREATE TABLE "files"("fileid" text NOT NULL, "filename" text NOT NULL, "userid"
+      integer NOT NULL, PRIMARY KEY ("fileid") )
+  type: run_sql
+- args:
+    name: files
+  type: add_existing_table_or_view
