@@ -1,0 +1,7 @@
+- alias: hasura
+  config:
+    configmap: controller-conf
+    namespace: also52-hasura
+  data: null
+  kubeContext: also52
+  name: also52
