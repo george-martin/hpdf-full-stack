@@ -69,7 +69,7 @@ app.get('/check_req', function( req, res ) {
     return fetchAction(url, options)
     .then( function( resp ) {
       
-      if ( resp[0].userid === user_id ) {
+      if ( (resp[0].userid).toString() === (user_id).toString() ) {
         res.status(200).send('ok');
         return;
       }
