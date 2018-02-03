@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.get('/',function(req,res){
   res.send("heyyy");
 })
-/*
+
 app.get('/check_req', function( req, res ) {
 
   if ( req.query.file_op === 'read' ) {   
@@ -55,8 +55,9 @@ app.get('/check_req', function( req, res ) {
       }
     };
 
+    var url= "https://data.also52.hasura-app.io/v1/query"
     const options = {
-      url: 'https://data.also52.hasura-app.io/v1/query',
+      
       method: 'POST',
       body: JSON.stringify(queryObj),
       headers: {
@@ -66,7 +67,7 @@ app.get('/check_req', function( req, res ) {
       }
     }
 
-    return rp(options)
+    return fetchAction(url, options)
     .then( function( resp ) {
       resp = JSON.parse(resp);
       if ( resp[0].userid === user_id ) {
@@ -85,7 +86,7 @@ app.get('/check_req', function( req, res ) {
   }
 });
 
-*/
+
 app.get('/logout',function(req,res){ 
   var auth_token = req.body.data.auth_token;
 var url = "https://auth.also52.hasura-app.io/v1/user/logout";
@@ -300,7 +301,7 @@ app.post('/upload',function(req,res){
 //   });
 // });
 
-app.post('/download',function(req,res){
+/*app.post('/download',function(req,res){
   
   var auth_token = req.body.data.token;
   var authority = "Bearer " + auth_token;
@@ -327,7 +328,7 @@ app.post('/download',function(req,res){
     
 
   
-});
+});*/
 
 
 
