@@ -68,7 +68,7 @@ app.get('/check_req', function( req, res ) {
 
     return fetchAction(url, options)
     .then( function( resp ) {
-      resp = JSON.parse(resp);
+      
       if ( resp[0].userid === user_id ) {
         res.status(200).send('ok');
         return;
