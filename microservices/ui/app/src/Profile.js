@@ -170,10 +170,11 @@ import { saveOffline, getSavedToken } from './config';
                 const input = document.querySelector('input[type="file"]');
                 if (input.files[0]) {
                   this.handleFileUpload(input.files[0])
-                  window.location.reload();
+                  
                 } else {
                   this.showAlert("Please select a file")
                 }
+                window.location.reload();
               }}/>
               <FlatButton
                 label="Logout"
