@@ -1,0 +1,9 @@
+- args:
+    permission:
+      columns:
+      - fileid
+      - userid
+      filter: {}
+    role: anonymous
+    table: files
+  type: create_select_permission
