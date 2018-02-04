@@ -132,7 +132,7 @@ import { saveOffline, getSavedToken } from './config';
           } else {
             this.showAlert("File upload failed: " + response);
           }
-          this.props.history.push('/profile')
+          
         }).catch(error => {
           console.log('File upload failed: ' + error);
         });
@@ -170,6 +170,7 @@ import { saveOffline, getSavedToken } from './config';
                 const input = document.querySelector('input[type="file"]');
                 if (input.files[0]) {
                   this.handleFileUpload(input.files[0])
+                  window.location.reload();
                 } else {
                   this.showAlert("Please select a file")
                 }
