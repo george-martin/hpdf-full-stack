@@ -36,7 +36,7 @@ app.get('/',function(req,res){
 
 app.get('/check_req', function( req, res ) {
   //if ( req.query.file_op === 'read' ) {   
-    const file_id = req.query.file_id;
+   // const file_id = req.query.file_id;
     const user_id = req.headers['x-hasura-user-id'];
     res.status(200).send('ok');
  // }
