@@ -174,7 +174,7 @@ import { saveOffline, getSavedToken } from './config';
                 } else {
                   this.showAlert("Please select a file")
                 }
-                window.location.reload();
+                
               }}/>
               <FlatButton
                 label="Logout"
