@@ -18,8 +18,8 @@
 #
 # Default permissions are admin-only
 
-#hookUrl: http://localhost:8080/v1/hooks/public-read-user-write
-hookUrl: http://file-check.default/check_req
+hookUrl: http://localhost:8080/v1/hooks/public-read-user-write
+#hookUrl: http://file-check.default/check_req
 
 # volume
 # -------
