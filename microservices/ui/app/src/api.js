@@ -25,6 +25,26 @@ const authenticateUser = (username, password, shouldSignUp) => {
     });
   }
 
+  const signout = (auth_token) => {
+    var token1 = auth_token;
+    var url = "https://api.also52.hasura-app.io/logout";
+    var requestOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        
+        data: {
+          "auth_token": token1,
+        }
+      })
+  };
+  return fetch(url,requestOptions)
+        .then(function(response){
+          return (response)
+        })
+  }
   const uploadFile = (file,filenam,authToken) => {
     const options = {
         method: 'POST',

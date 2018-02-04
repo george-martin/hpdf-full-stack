@@ -108,6 +108,14 @@ import { saveOffline, getSavedToken } from './config';
           alertMessage: ''
         })
       }
+
+      logout = () => {
+        console.log('on logout clicked');
+        var token = getSavedToken();
+        signout(token).then(resp => {
+          this.props.history.push('/')
+        })
+      }
     
       handleFileUpload = (file) => {
         const authToken = getSavedToken();
@@ -119,7 +127,7 @@ import { saveOffline, getSavedToken } from './config';
         uploadFile(file,this.state.file_name,authToken).then(response => {
           this.showProgressIndicator(false)
           if (response.affected_rows === 1) {
-            this.showAlert("File uploaded successfully: " + JSON.stringify(response, null, 4));
+            this.showAlert("File uploaded successfully");
           } else {
             this.showAlert("File upload failed: " + response);
           }
@@ -164,26 +172,12 @@ import { saveOffline, getSavedToken } from './config';
                   this.showAlert("Please select a file")
                 }
               }}/>
-          <button type='button' value='logout' name="logout" onClick={(e) => {
-            var token1 = getSavedToken();
-            var url = "https://api.also52.hasura-app.io/logout";
-            var requestOptions = {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                
-                data: {
-                  "auth_token": token1,
-                }
-              })
-          };
-          return fetch(url,requestOptions)
-                .then(function(response){
-                  console.log("done")
-                })
-          }}>Logout</button>
+              <FlatButton
+                label="Logout"
+                primary={true}
+                onClick= {(e) => {
+                  this.logout()
+                }}/>
           </Paper>
           {this.state.isUploadingFile ? <CircularProgress /> : null}
           <Dialog
