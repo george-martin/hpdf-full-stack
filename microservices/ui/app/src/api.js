@@ -88,5 +88,6 @@ const authenticateUser = (username, password, shouldSignUp) => {
   export {
     
     authenticateUser,
-    uploadFile
+    uploadFile,
+    signout
   }
