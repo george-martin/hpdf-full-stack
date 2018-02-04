@@ -132,6 +132,7 @@ import { saveOffline, getSavedToken } from './config';
           } else {
             this.showAlert("File upload failed: " + response);
           }
+          this.props.history.push('/profile')
         }).catch(error => {
           console.log('File upload failed: ' + error);
         });
