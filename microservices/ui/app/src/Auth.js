@@ -58,7 +58,8 @@ const textfieldStyle = {
         this.showProgressIndicator(false)
         if (authResponse.auth_token) {
           saveOffline(authResponse.auth_token)
-          this.showAlert("SignUp Successful! \n Your auth credentials are: " + JSON.stringify(authResponse, null, 2))
+          this.props.history.push('/profile')
+        
         } else {
           this.showAlert(JSON.stringify(authResponse));
         }

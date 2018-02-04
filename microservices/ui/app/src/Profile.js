@@ -113,6 +113,7 @@ import { saveOffline, getSavedToken } from './config';
         console.log('on logout clicked');
         var token = getSavedToken();
         signout(token).then(resp => {
+          window.localStorage.clear();
           this.props.history.push('/')
         })
       }
