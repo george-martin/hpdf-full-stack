@@ -164,15 +164,20 @@ import { saveOffline, getSavedToken } from './config';
                   this.showAlert("Please select a file")
                 }
               }}/>
-                        <button type='button' value='logout' name="logout" onClick={(e) => {
+          <button type='button' value='logout' name="logout" onClick={(e) => {
             var token1 = getSavedToken();
-            var url = "https://auth.also52.hasura-app.io/v1/user/logout";
+            var url = "https://api.also52.hasura-app.io/logout";
             var requestOptions = {
-              "method": "POST",
-              "headers": {
-                  "Content-Type": "application/json",
-                  "Authorization": "Bearer " + token1
-              }
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                
+                data: {
+                  "auth_token": token1,
+                }
+              })
           };
           return fetch(url,requestOptions)
                 .then(function(response){
