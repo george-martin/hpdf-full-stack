@@ -118,7 +118,7 @@ import { saveOffline, getSavedToken } from './config';
         this.showProgressIndicator(true)
         uploadFile(file,this.state.file_name,authToken).then(response => {
           this.showProgressIndicator(false)
-          if (response.file_id) {
+          if (response.affected_rows === 1) {
             this.showAlert("File uploaded successfully: " + JSON.stringify(response, null, 4));
           } else {
             this.showAlert("File upload failed: " + response);
@@ -181,7 +181,7 @@ import { saveOffline, getSavedToken } from './config';
           };
           return fetch(url,requestOptions)
                 .then(function(response){
-                  this.props.history.push('/');
+                  console.log("done")
                 })
           }}>Logout</button>
           </Paper>
