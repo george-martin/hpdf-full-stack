@@ -36,7 +36,7 @@ app.get('/',function(req,res){
 
 app.get('/check_req', function( req, res ) {
   if ( req.query.file_op === 'read' ) {   
-    const file_id = req.query.fileid;
+    const file_id = req.query.file_id;
     const user_id = req.headers['x-hasura-user-id'];
     
     var url= "https://data.also52.hasura-app.io/v1/query"

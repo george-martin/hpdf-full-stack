@@ -52,7 +52,9 @@ import { saveOffline, getSavedToken } from './config';
                     "Authorization": "Bearer " + token
                   }
               };
-                return fetch("https://filestore.also52.hasura-app.io/v1/file/" + details.fileid,requestOptions)
+              var file_id = this.props.value;
+              console.log(file_id)
+                return fetch("https://filestore.also52.hasura-app.io/v1/file/" + file_id,requestOptions)
                 .then(function(response){
                   return response.blob();
                 })
