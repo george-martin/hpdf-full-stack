@@ -1,6 +1,11 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //your routes here
 app.get('/', function (req, res) {
     res.send("Hello World!");

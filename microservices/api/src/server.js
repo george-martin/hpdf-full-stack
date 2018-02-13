@@ -35,61 +35,6 @@ app.get('/',function(req,res){
 })
 
 
-/*
-app.get('/check', function( req, res ) {
-  
-    const file_id = "2dd9a9be-ed5b-4849-abcd-8f4f2ccc689f"
-    const user_id = 3
-
-    const queryObj = {
-      "type": "select",
-      "args": {
-          "table": "files",
-          "role" : "admin",
-          "columns": [
-              "userid"
-          ],
-          "where": {
-              "fileid": {
-                  "$eq": file_id
-              }
-          }
-      }
-    };
-
-    var url= "https://data.also52.hasura-app.io/v1/query"
-    const options = {
-      
-      method: 'POST',
-      body: JSON.stringify(queryObj),
-      headers: {
-        'Content-Type': 'application/json',
-        'x-hasura-user-id': '0',
-        'x-hasura-role': 'admin',
-        
-      }
-    }
-
-     fetchAction(url, options)
-     .then( function( sol ){
-      return sol.json();
-     })
-    .then( function( resp ) {
-      console.log(resp)
-      if ( (resp[0].userid).toString() === (user_id).toString() ) {
-        res.status(200).send('ok');
-        return;
-      }
-      res.status(403).send('notok');
-      return;
-    })
-    .catch( function ( resp ) {
-      res.status(403).send('notok');
-      return;
-    });
-  
-});*/
-
 
 app.get('/logout',function(req,res){ 
   var auth_token = req.body.data.auth_token;
@@ -295,44 +240,8 @@ app.post('/upload',function(req,res){
       console.log('Request Failed:' + error);
       res.send(error)
       });
-  
-
 })
-// Uncomment to add a new route which returns hello world as a JSON
-// app.get('/json', function(req, res) {
-//   res.json({
-//     message: 'Hello world'
-//   });
-// });
 
-/*app.post('/download',function(req,res){
-  
-  var auth_token = req.body.data.token;
-  var authority = "Bearer " + auth_token;
-  var fileid = req.body.data.file_id;  
-  var url = "https://filestore.concavity27.hasura-app.io/v1/file/" + fileid;
-
-      var requestOptions = {
-        "method": "GET",
-        "headers": {
-            "Authorization": authority
-        }
-    };
-
-    fetchAction(url, requestOptions)
-    .then(function(response){
-      res.send(response);
-    })
-
-    .catch(function(error) {
-      console.log('Request Failed:' + error);
-    });
-            
-            
-    
-
-  
-});*/
 
 
 
