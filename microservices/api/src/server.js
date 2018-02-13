@@ -40,8 +40,23 @@ app.get('/check_req', function( req, res ) {
     const user_id = req.headers['x-hasura-user-id'];
     
     var url= "https://data.also52.hasura-app.io/v1/query"
+
+    const queryObj = {
+      "type": "select",
+      "args": {
+          "table": "files",
+          
+          "columns": [
+              "userid"
+          ],
+          "where": {
+              "fileid": {
+                  "$eq": file_id
+              }
+          }
+      }
+    };
     const options = {
-      
       method: 'POST',
       body: JSON.stringify(queryObj),
       headers: {
@@ -53,7 +68,7 @@ app.get('/check_req', function( req, res ) {
 
      fetchAction(url, options)
     .then( function( sol ) {
-      return response.json();
+      return sol.json();
     })
     .then( function( resp ) {
       
@@ -72,7 +87,7 @@ app.get('/check_req', function( req, res ) {
     res.status(200).send('ok');
   }
 });
-
+/*
 app.get('/check', function( req, res ) {
   
     const file_id = "2dd9a9be-ed5b-4849-abcd-8f4f2ccc689f"
@@ -125,7 +140,7 @@ app.get('/check', function( req, res ) {
       return;
     });
   
-});
+});*/
 
 
 app.get('/logout',function(req,res){ 
@@ -380,7 +395,6 @@ app.use(function(req, res){
 	res.send('404 - Not Found');
 });
 
-// custom 500 page1
 
 app.listen(8080, function () {
   console.log('Example app listening on port 8080!');
