@@ -43,7 +43,6 @@ import { saveOffline, getSavedToken } from './config';
         })
         .then(result => {
           let fileinfo = result.files.map((details) => {
-            var file_id =details.fileid;
             return(
               <button type='button' value={details.fileid} name="download_file" onClick={(e) => {
 
@@ -53,8 +52,7 @@ import { saveOffline, getSavedToken } from './config';
                     "Authorization": "Bearer " + token
                   }
               };
-              
-                return fetch("https://filestore.also52.hasura-app.io/v1/file/" + file_id,requestOptions)
+                return fetch("https://filestore.also52.hasura-app.io/v1/file/" + details.fileid,requestOptions)
                 .then(function(response){
                   return response.blob();
                 })
