@@ -175,11 +175,7 @@ ui:
 api:
   /:
     corsPolicy: allow_all
-    enableAuth: true
-    enableCORS: true
-    enableWebsockets: true
-    locationDirectives: ""
-    restrictToRoles: []
+    
     upstreamService:
       name: api
       namespace: '{{ cluster.metadata.namespaces.user }}'
