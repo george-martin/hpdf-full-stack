@@ -34,6 +34,8 @@ app.get('/',function(req,res){
   res.send("heyyy");
 })
 
+
+/*
 app.get('/check_req', function( req, res ) {
   res.status(200).send('ok');
   return;
@@ -89,7 +91,7 @@ app.get('/check_req', function( req, res ) {
     res.status(200).send('ok');
   }
 });
-
+*/
 
 app.get('/logout',function(req,res){ 
   var auth_token = req.body.data.auth_token;
