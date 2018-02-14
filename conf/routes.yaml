@@ -174,7 +174,7 @@ ui:
     upstreamServicePort: 80
 api:
   /:
-    corsPolicy: null
+    corsPolicy: allow_all
     enableAuth: true
     enableCORS: true
     enableWebsockets: true
