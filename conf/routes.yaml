@@ -186,13 +186,6 @@ api:
     upstreamServicePath: /
     upstreamServicePort: 80
 
-file-check:
-  /:
-    corsPolicy: allow_all
-    upstreamService:
-      name: file-check
-      namespace: '{{ cluster.metadata.namespaces.user }}'
-    upstreamServicePath: /
-    upstreamServicePort: 80
+
 
 
