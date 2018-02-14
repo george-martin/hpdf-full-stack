@@ -5,10 +5,3 @@
   data: null
   kubeContext: also52
   name: also52
-- alias: myservice
-  config:
-    configmap: controller-conf
-    namespace: columbine18-hasura
-  data: null
-  kubeContext: columbine18
-  name: columbine18

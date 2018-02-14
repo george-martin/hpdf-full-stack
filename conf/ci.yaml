@@ -26,10 +26,3 @@ remotes:
       api:
         dockerfile: microservices/api/Dockerfile
         path: microservices/api
-
-
-    '{{ cluster.metadata.namespaces.user }}.file-check':
-      file-check:
-        dockerfile: microservices/file-check/Dockerfile
-        path: microservices/file-check
-
