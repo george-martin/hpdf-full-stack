@@ -7,6 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import Paper from 'material-ui/Paper';
 import { withRouter } from 'react-router-dom';
+import FileSaver from 'file-saver';
 import { saveOffline, getSavedToken } from './config';
  class Profile extends Component{
     constructor() {
@@ -58,7 +59,7 @@ import { saveOffline, getSavedToken } from './config';
                   return response.blob();
                 })
                 .then(function(blob) {
-                  console.log(blob);
+                  FileSaver.saveAs(blob, details.filename + '.zip');
                 })
                 .catch(function(error) {
                   console.log('Request Failed:' + error);
