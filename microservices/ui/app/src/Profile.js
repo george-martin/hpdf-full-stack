@@ -27,57 +27,62 @@ import { saveOffline, getSavedToken } from './config';
         var name='';
         var url = "https://api.also52.hasura-app.io/profile"
         var token = getSavedToken();
-        var requestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              data: {
-                "auth_token" : token
-              }
-            })
-        };
-        fetch(url, requestOptions)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(result => {
-          let fileinfo = result.files.map((details) => {
-            var file_id = details.fileid;
-            return(
-              <button type='button' value={details.fileid} name="download_file" onClick={(e) => {
+          if(token){          
+          var requestOptions = {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                data: {
+                  "auth_token" : token
+                }
+              })
+          };
+          fetch(url, requestOptions)
+          .then(function(response) {
+              return response.json();
+          })
+          .then(result => {
+            let fileinfo = result.files.map((details) => {
+              var file_id = details.fileid;
+              return(
+                <button type='button' value={details.fileid} name="download_file" onClick={(e) => {
 
-                var requestOptions = {
-                  "method": "GET",
-                  "headers": {
-                    "Authorization": "Bearer " + token
-                  }
-              };
-                return fetch("https://filestore.also52.hasura-app.io/v1/file/" + file_id,requestOptions)
-                .then(function(response){
-                  return response.blob();
-                })
-                .then(function(blob) {
-                  FileSaver.saveAs(blob, details.filename + '.zip');
-                })
-                .catch(function(error) {
-                  console.log('Request Failed:' + error);
-                });
-              }} >{details.filename}</button>
+                  var requestOptions = {
+                    "method": "GET",
+                    "headers": {
+                      "Authorization": "Bearer " + token
+                    }
+                };
+                  return fetch("https://filestore.also52.hasura-app.io/v1/file/" + file_id,requestOptions)
+                  .then(function(response){
+                    return response.blob();
+                  })
+                  .then(function(blob) {
+                    FileSaver.saveAs(blob, details.filename + '.zip');
+                  })
+                  .catch(function(error) {
+                    console.log('Request Failed:' + error);
+                  });
+                }} >{details.filename}</button>
+              )
+            })
+            this.setState({fileinfo : fileinfo})
+            return(
+              <h1>{result.username}</h1>
             )
           })
-          this.setState({fileinfo : fileinfo})
-          return(
-            <h1>{result.username}</h1>
-          )
-        })
-        .then(userinfo => {
-          this.setState({username: userinfo});
-        })
-        .catch(function(error) {
-            console.log('Request Failed:' + error);
-        });
+          .then(userinfo => {
+            this.setState({username: userinfo});
+          })
+          .catch(function(error) {
+              console.log('Request Failed:' + error);
+          });
+        }
+        else{
+          return(<h1>no</h1>)
+        }
       }
     
       showProgressIndicator = (shouldShow) => {
