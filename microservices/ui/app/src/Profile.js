@@ -127,6 +127,7 @@ import { saveOffline, getSavedToken } from './config';
           return;
         }
         this.showProgressIndicator(true)
+        console.log(this.state.file_name);
         uploadFile(file,this.state.file_name,authToken).then(response => {
           this.showProgressIndicator(false)
           if (response.affected_rows === 1) {
