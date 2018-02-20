@@ -27,8 +27,7 @@ import { saveOffline, getSavedToken } from './config';
         var name='';
         var url = "https://api.also52.hasura-app.io/profile"
         var token = getSavedToken();
-        
-          if(token){          
+                
           var requestOptions = {
               method: "POST",
               headers: {
@@ -80,10 +79,7 @@ import { saveOffline, getSavedToken } from './config';
           .catch(function(error) {
               console.log('Request Failed:' + error);
           });
-        }
-        else{
-          return(<h1>no</h1>)
-        }
+
       }
     
       showProgressIndicator = (shouldShow) => {
@@ -124,7 +120,7 @@ import { saveOffline, getSavedToken } from './config';
           window.localStorage.clear();
           this.props.history.push('/')
         })
-        token = "";
+        console.log(token);
       }
     
       handleFileUpload = (file) => {
