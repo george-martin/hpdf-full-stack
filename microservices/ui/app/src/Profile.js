@@ -122,10 +122,8 @@ import { saveOffline, getSavedToken } from './config';
     
       handleFileUpload = (file) => {
         const authToken = getSavedToken();
-        console.log(this.state.file_name);
-        console.log("Button")
         if (!authToken) {
-          this.showAlert('Please login first. Go to /auth to login');
+          this.showAlert('Please login first.');
           return;
         }
         this.showProgressIndicator(true)
@@ -174,6 +172,8 @@ import { saveOffline, getSavedToken } from './config';
               onClick={(e) => {
                 e.preventDefault();
                 const input = document.querySelector('input[type="file"]');
+                console.log(this.state.file_name);
+                console.log("Button")
                 if (input.files[0]) {
                   this.handleFileUpload(input.files[0])
                   
