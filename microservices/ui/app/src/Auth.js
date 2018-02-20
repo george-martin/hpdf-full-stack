@@ -35,7 +35,7 @@ const textfieldStyle = {
     }
   
     login = () => {
-      console.log('on login clicked');
+      
       this.showProgressIndicator(true)
       authenticateUser(this.state.username, this.state.password, false).then(authResponse => {
         this.showProgressIndicator(false)
@@ -52,7 +52,7 @@ const textfieldStyle = {
     }
   
     register = () => {
-      console.log('on register clicked');
+      
       this.showProgressIndicator(true)
       authenticateUser(this.state.username, this.state.password, true).then(authResponse => {
         this.showProgressIndicator(false)

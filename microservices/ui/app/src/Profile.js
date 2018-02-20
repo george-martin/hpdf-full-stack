@@ -27,8 +27,8 @@ import { saveOffline, getSavedToken } from './config';
         var name='';
         var url = "https://api.also52.hasura-app.io/profile"
         var token = getSavedToken();
-        console.log(token);
-          if(token){          
+        
+          if(token != null){          
           var requestOptions = {
               method: "POST",
               headers: {
@@ -118,7 +118,7 @@ import { saveOffline, getSavedToken } from './config';
       }
 
       logout = () => {
-        console.log('on logout clicked');
+        
         var token = getSavedToken();
         signout(token).then(resp => {
           window.localStorage.clear();
