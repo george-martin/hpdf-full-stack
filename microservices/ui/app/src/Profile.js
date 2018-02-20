@@ -123,6 +123,7 @@ import { saveOffline, getSavedToken } from './config';
       handleFileUpload = (file) => {
         const authToken = getSavedToken();
         console.log(this.state.file_name);
+        console.log("Button")
         if (!authToken) {
           this.showAlert('Please login first. Go to /auth to login');
           return;
@@ -131,6 +132,7 @@ import { saveOffline, getSavedToken } from './config';
         
         uploadFile(file,this.state.file_name,authToken).then(response => {
           this.showProgressIndicator(false)
+          window.location.reload();
           if (response.affected_rows === 1) {
             this.showAlert("File uploaded successfully");
           } else {
