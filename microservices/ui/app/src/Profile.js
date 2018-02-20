@@ -28,7 +28,7 @@ import { saveOffline, getSavedToken } from './config';
         var url = "https://api.also52.hasura-app.io/profile"
         var token = getSavedToken();
         
-          if(token != null){          
+          if(token){          
           var requestOptions = {
               method: "POST",
               headers: {
@@ -124,6 +124,7 @@ import { saveOffline, getSavedToken } from './config';
           window.localStorage.clear();
           this.props.history.push('/')
         })
+        console.log(token);
       }
     
       handleFileUpload = (file) => {
