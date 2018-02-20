@@ -46,7 +46,7 @@ const textfieldStyle = {
           const path = '/profile'
           this.props.history.push('/profile')
         } else {
-          this.showAlert(JSON.stringify(authResponse));
+          this.showAlert(JSON.stringify(authResponse.message));
         }
       });
     }
@@ -61,7 +61,7 @@ const textfieldStyle = {
           this.props.history.push('/profile')
         
         } else {
-          this.showAlert(JSON.stringify(authResponse));
+          this.showAlert(JSON.stringify(authResponse.message));
         }
       });
     }
