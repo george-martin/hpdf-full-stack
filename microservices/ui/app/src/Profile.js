@@ -131,11 +131,6 @@ import { saveOffline, getSavedToken } from './config';
         uploadFile(file,this.state.file_name,authToken).then(response => {
           this.showProgressIndicator(false)
           window.location.reload();
-          if (response.affected_rows === 1) {
-            this.showAlert("File uploaded successfully");
-          } else {
-            this.showAlert("File upload failed: " + response);
-          }
           
         }).catch(error => {
           console.log('File upload failed: ' + error);
@@ -172,15 +167,17 @@ import { saveOffline, getSavedToken } from './config';
               onClick={(e) => {
                 e.preventDefault();
                 const input = document.querySelector('input[type="file"]');
-                console.log(this.state.file_name);
-                console.log("Button")
-                if (input.files[0]) {
-                  this.handleFileUpload(input.files[0])
-                  
-                } else {
-                  this.showAlert("Please select a file")
+                if(this.state.file_name === ""){
+                  this.showAlert("Please enter a filename")
                 }
-                
+                else{
+                  if (input.files[0]) {
+                    this.handleFileUpload(input.files[0])
+                    
+                  } else {
+                    this.showAlert("Please select a file")
+                  }
+                }
               }}/>
               <FlatButton
                 label="Logout"
