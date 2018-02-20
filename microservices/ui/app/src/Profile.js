@@ -124,7 +124,7 @@ import { saveOffline, getSavedToken } from './config';
           window.localStorage.clear();
           this.props.history.push('/')
         })
-        console.log(token);
+        token = "";
       }
     
       handleFileUpload = (file) => {
